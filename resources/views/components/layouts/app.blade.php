@@ -9,6 +9,9 @@
     <title>AppLaravel - {{$title ?? ''}}</title>
     {{-- <meta name="descipcion" content="@yield('meta-description','Default meta description')" /> --}}
     <meta name="descipcion" content="{{$metaDescription ?? 'Default meta description'}}" >
+    {{--<link rel="stylesheet" href="/css/app.css">
+    <script src="/js/app.js"></script>--}}
+    @vite(['resources/css/app.scss','resources/js/app.js'])
 </head>
 
 <body>
@@ -16,6 +19,11 @@
     <x-layouts.nav/>
     <!--contenido varible de cada pagina -->
     {{-- @yield('content') --}}
+    @if (session('status'))
+        <div >
+            {{ session('status') }}
+        </div>
+    @endif
 
     {{ $slot }}
 </body>

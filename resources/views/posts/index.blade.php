@@ -15,19 +15,35 @@
     <h1>Blog</h1>
     <a href="{{ route('posts.create') }}">Create New Post</a>
     {{-- @dump($posts) --}}
-
+<div class="row">
+    <div class="col-6">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Post</th>
+            <th scope="col" colspan="3">Process</th>
+          </tr>
+        </thead>
+        <tbody>
     @foreach ($posts as $post)
-        <div style="display: flex; align-items: baseline">
-            <h2><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></h2>
-            &nbsp;
-            <a href="{{ route('posts.edit', $post) }}">Edit</a>
-            &nbsp;
-            <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                    @method('delete')
+        <div >
+            <tr>
+            <th scope="row">1</th>
+            <td>{{ $post->title }}</td>
+            <td><a href="{{ route('posts.show',$post) }}">View</a></td>
+            <td><a href="{{ route('posts.edit', $post) }}">Edit</a></td>
+            <td>
+                <form action="{{ route('posts.destroy', $post) }}" method="POST">
                     @csrf
-                    <button type="submit">Delete</button>
-            </form>
+                    @method('delete')
+                    <button type="submit" class="btn btn-light">Delete</button>
+                </form>
+            </td>
+            </tr>
         </div>
     @endforeach
-
+</tbody>
+</table>
+</div></div>
 </x-layouts.app>

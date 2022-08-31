@@ -66,11 +66,8 @@
 </head>
 
 <body class="bg-light">
-    {{-- @include('partials.nav') --}}
     
-    <x-layouts.nav/>
-    <!--contenido varible de cada pagina -->
-    {{-- @yield('content') --}}
+    @include('layouts.partials.navbar')
     
     @if (session('status'))
         <div >

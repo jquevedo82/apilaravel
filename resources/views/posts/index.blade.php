@@ -32,7 +32,7 @@
                                  @foreach ($posts as $post)
                                      <div>
                                          <tr>
-                                             <th scope="row">1</th>
+                                             <th scope="row">{{ $post->id }}</th>
                                              <td>{{ $post->title }}</td>
                                              <td><a href="{{ route('posts.show', $post) }}">View</a></td>
                                              <td><a href="{{ route('posts.edit', $post) }}">Edit</a></td>

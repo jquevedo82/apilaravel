@@ -35,11 +35,16 @@ Route::patch('/blog/{post}',[PostController::class, 'update'])->name('posts.upda
 Route::delete('/blog/{post}',[PostController::class, 'destroy'])->name('posts.destroy');//destroy elimina
 */
 //Route::resource('posts',PostController::class); // esto es lo mismo q arriba los 7 methodos o routas
-Route::resource('blog',PostController::class,[
-    'names' => 'posts',
-    'parameters' => ['blog' => 'post']
-]);
-
+Route::middleware(['auth'])->prefix('blog')->name('posts.')->group(function () {
+    Route::get('/', [PostController::class,'index'])->name('index');//metodo index para listado de recursos
+    Route::get('/create',[PostController::class,'create'])->name('create');//debe ir primero porq si
+    Route::post('/',[PostController::class, 'store'])->name('store');//store almacenar
+    //busca un post llamado create
+    Route::get('/{post}', [PostController::class,'show'])->name('show');//metodo show para mostar el detalle de un recurso
+    Route::get('/{post}/edit', [PostController::class,'edit'])->name('edit');
+    Route::patch('/{post}',[PostController::class, 'update'])->name('update');//update modifica
+    Route::delete('/{post}',[PostController::class, 'destroy'])->name('destroy');//destroy elimina
+});
 Route::view('/about', 'about')->name('about');
 
 /*Route::get('/', function () {

@@ -41,7 +41,7 @@ class PostController extends Controller
 
     public function store(SavePostRequest $request)
     {
-       /* $validated = $request->validate([
+        /* $validated = $request->validate([
             'title' => ['required', 'min:4'],
             'body' => ['required']
         ], [
@@ -107,12 +107,12 @@ class PostController extends Controller
 
         //session()->flash('status', 'Post Update!!'); //nombre del mensaje y mensaje
         //return to_route('posts.show', $post);
-        return to_route('posts.show', $post)->with('status','Post Update!!');
+        return to_route('posts.show', $post)->with('status', 'Post Update!!');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route('posts.index')->with('status','Post Delete!!');
+        return to_route('posts.index')->with('status', 'Post Delete!!');
     }
 }

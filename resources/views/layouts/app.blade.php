@@ -13,7 +13,9 @@
     @include('partials.nav')
 
     <!--contenido varible de cada pagina -->
-    @yield('content')
+    <section>
+        @yield('body')
+    </section>
 </body>
 
 </html>
